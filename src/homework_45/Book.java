@@ -1,23 +1,20 @@
 package homework_45;
-/*
-+Создайте класс Book (книга), в конструктор которого передайте:
-+автора, название книги и количество страниц.
-+Реализуйте интерфейс для сравнения книг:
-+они должны сортироваться по авторам,
-+а если авторы совпадают - по названиям
-(и там, и там - по алфавиту, "в словарном порядке").
- */
 
 public class Book implements Comparable<Book> {
-  private String author;
-  private String title;
-  private int numPages;
 
-  public Book(String author, String title, int numPages) {
+  private final String author;
+  private final String title;
+  private final int pages;
+
+  // в конструктор которого передавайте автора, название книги и
+  // количество страниц.
+  public Book(String author, String title, int pages) {
     this.author = author;
     this.title = title;
-    this.numPages = numPages;
+    this.pages = pages;
   }
+
+  // сеттеров не будет - все поля final (константы)
 
   public String getAuthor() {
     return author;
@@ -27,15 +24,27 @@ public class Book implements Comparable<Book> {
     return title;
   }
 
-  public int getNumPages() {
-    return numPages;
+  public int getPages() {
+    return pages;
   }
 
+  // они должны сортироваться по авторам, а если авторы совпадают
+  // - по названиям (и там, и там - по алфавиту, "в словарном порядке").
+  @Override
   public int compareTo(Book other) {
-    if (author != other.author) {
-      return author.compareTo(other.author);
+    if (!author.equals(other.author)) { // если авторы не совпадают, то
+      return author.compareTo(other.author); // сравнение книг - то же самое, что сравнение авторов
     }
-    return title.compareTo(other.title);
+    // сюда мы попадаем, только если авторы совпали
+    return title.compareTo(other.title); // сравнение книг - то же самое, что сравнение названий
   }
 
+  @Override
+  public String toString() {
+    return "Book{" +
+            "author='" + author + '\'' +
+            ", title='" + title + '\'' +
+            ", pages=" + pages +
+            '}';
+  }
 }
