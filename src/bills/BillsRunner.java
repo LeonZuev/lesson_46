@@ -32,8 +32,8 @@ public class BillsRunner {
       Bill bill = Bill.readBill();
       bills.add(bill);
     }
-    System.out.println("Счета по алфавиту(по названию услуги)");
-    bills.sort(new BillServiceComparator());
+    System.out.println("Счета по стоимости (по возрастанию):");
+    bills.sort(new BillCostComparator());
     for (Bill b : bills) {
       System.out.println(b);
     }
