@@ -2,9 +2,9 @@ package homework_45;
 /*
 +Создайте класс Book (книга), в конструктор которого передайте:
 +автора, название книги и количество страниц.
-Реализуйте интерфейс для сравнения книг:
-они должны сортироваться по авторам,
-а если авторы совпадают - по названиям
++Реализуйте интерфейс для сравнения книг:
++они должны сортироваться по авторам,
++а если авторы совпадают - по названиям
 (и там, и там - по алфавиту, "в словарном порядке").
  */
 
@@ -32,9 +32,10 @@ public class Book implements Comparable<Book> {
   }
 
   public int compareTo(Book other) {
-    while (author.compareTo(other.author) == 0){
-
+    if (author != other.author) {
+      return author.compareTo(other.author);
     }
+    return title.compareTo(other.title);
   }
 
 }
