@@ -8,7 +8,7 @@ package homework_45;
 (и там, и там - по алфавиту, "в словарном порядке").
  */
 
-public class Book {
+public class Book implements Comparable<Book> {
   private String author;
   private String title;
   private int numPages;
@@ -30,4 +30,11 @@ public class Book {
   public int getNumPages() {
     return numPages;
   }
+
+  public int compareTo(Book other) {
+    while (author.compareTo(other.author) == 0){
+
+    }
+  }
+
 }
